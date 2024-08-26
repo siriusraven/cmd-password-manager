@@ -5,4 +5,4 @@ class TableManager:
         self.PasswordTable = PrettyTable()
         self.PasswordTable.field_names = ['website', 'password']
     def FillTable(self, passwords) -> None:
-        self.
+        pass
