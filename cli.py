@@ -3,6 +3,8 @@ import sys
 # CLI = command line interface
 class Argparse:
     def __init__(self) -> None:
+        self.CommandValue = None
+
         parser = argparse.ArgumentParser(description='A Commandline based password manager.',
                                          usage=f'<command> |<args>| |<args>| ...\nAvailable commands: {[method_name for method_name in dir(object)
                                                                        if callable(getattr(object, method_name))]}')
@@ -16,26 +18,36 @@ class Argparse:
             exit()
 
     # password id is going to be auto assigned and will not be determined by the user
-    @staticmethod
-    def add_password() -> None:
+    def add_password(self) -> None:
         parser = argparse.ArgumentParser(description='Adds new keys', 
-                                         usage='add_password <password>')
+                                         usage='add_password <password> <account>')
 
+        parser.add_argument('account_name')
         parser.add_argument('password')
         args = parser.parse_args(sys.argv[2:])
+
+        self.CommandValue = {'command': 'add_password',
+                             'args': vars(args)}
     
-    @staticmethod
-    def remove_password() -> None:
+    def remove_password(self) -> None:
         parser = argparse.ArgumentParser(description='Adds new keys', 
-                                         usage='remove_password <password-id>')
+                                         usage='remove_password <password-id> <account>')
 
+        parser.add_argument('account_name')
         parser.add_argument('password')
         args = parser.parse_args(sys.argv[2:])
+
+        self.CommandValue = {'command': 'remove_password',
+                                        'args': vars(args)}
+    
     # list the passwods inside a table using prettytable
-    @staticmethod
-    def list_passwords() -> None:
+    def list_passwords(self) -> None:
         parser = argparse.ArgumentParser(description='Adds new keys', 
                                          usage='list_passwords')
-
+        
+        parser.add_argument('account_name')
         parser.add_argument('-s', '--sort')
         args = parser.parse_args(sys.argv[2:])
+
+        self.CommandValue = {'command': 'list_passwords',
+                                        'args': vars(args)}
