@@ -35,7 +35,7 @@ class Argparse:
                                          usage='remove_password <password-id> <account>')
 
         parser.add_argument('account_name')
-        parser.add_argument('password')
+        parser.add_argument('password_id')
         args = parser.parse_args(sys.argv[2:])
 
         self.CommandValue = {'command': 'remove_password',

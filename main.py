@@ -18,7 +18,7 @@ def main() -> None:
         exit()
 
     #if the input was anything other than listing it will put the input into the Operations class and it will deal with it
-    Operation = Operations(command=IOParse['command'], args=IOParse['args'])
+    Operation = Operations(command=IOParse['command'], args=IOParse['args'], JsonFileManager=SaveFile)
 
     if Operations != 0:
         SaveFile.passwords.append(Operation)
