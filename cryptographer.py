@@ -13,7 +13,7 @@ class Cryptographer:
         return key, salt
 
     @staticmethod
-    def encryption(data: bytes, key: bytes):
+    def encryption(data: bytes, key: bytes) -> bytes:
         iv = get_random_bytes(AES.block_size)
         cipher = AES.new(key, AES.MODE_CBC, iv)
         padded_data = pad(data, AES.block_size)
@@ -21,7 +21,7 @@ class Cryptographer:
         return iv + encrypted_data
 
     @staticmethod
-    def decryption(encdata: bytes, key: bytes):
+    def decryption(encdata: bytes, key: bytes) -> bytes:
         iv = encdata[:AES.block_size]
         encrypted_data = encdata[AES.block_size:]
         cipher = AES.new(key, AES.MODE_CBC, iv)

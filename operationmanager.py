@@ -1,12 +1,23 @@
 #manages operations
 class Operations:
-    def __init__(self, command, account, args) -> None:
+    def __init__(self, command, args) -> None:
         self.command = command
-        self.account = account
         self.args = args
-    
-    def add_password(self) -> None:
-        pass
 
-    def add_password(self) -> None:
-        pass
+        getattr(self, command)
+    
+    def add_password(self, Id) -> None:
+        name = self.args['name']
+        password = self.args['password']
+
+        return {'name': name, 
+                'password': password,
+                'id': Id}
+
+    def remove_password(self) -> None:
+        return 0
+    
+    def Id_generator(self) -> int:
+        Id = None
+
+        return Id

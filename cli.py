@@ -20,10 +20,11 @@ class Argparse:
     # password id is going to be auto assigned and will not be determined by the user
     def add_password(self) -> None:
         parser = argparse.ArgumentParser(description='Adds new keys', 
-                                         usage='add_password <password> <account>')
-
-        parser.add_argument('account_name')
+                                         usage='add_password <website / app name> <password> <account>')
+        
+        parser.add_argument('name')
         parser.add_argument('password')
+        parser.add_argument('account_name')
         args = parser.parse_args(sys.argv[2:])
 
         self.CommandValue = {'command': 'add_password',
@@ -43,7 +44,7 @@ class Argparse:
     # list the passwods inside a table using prettytable
     def list_passwords(self) -> None:
         parser = argparse.ArgumentParser(description='Adds new keys', 
-                                         usage='list_passwords')
+                                         usage='list_passwords <account_name> -s |<name>| |<id>| |<password>|')
         
         parser.add_argument('account_name')
         parser.add_argument('-s', '--sort')
