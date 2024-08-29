@@ -23,6 +23,5 @@ class Operations:
                 self.JsonFileManager.passwords.remove(password)
     
     def Id_generator(self) -> int:
-        Id = None
-        
-        return Id
+        Ids = [x for x in self.JsonFileManager.passwords['id']]
+        return max(Ids) + 1

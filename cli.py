@@ -51,4 +51,4 @@ class Argparse:
         args = parser.parse_args(sys.argv[2:])
 
         self.CommandValue = {'command': 'list_passwords',
-                                        'args': vars(args)}
+                             'args': vars(args)}
