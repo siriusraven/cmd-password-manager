@@ -25,7 +25,7 @@ def main() -> None:
         print('Master key saved successfully. Please restart the program.')
         exit(0)
     
-    if IOParse['args']['password'] != None:
+    #if IOParse['args']['password'] != None:
         
     
     Database = DataBase(args=encrypted_args)
