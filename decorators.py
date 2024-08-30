@@ -1,6 +1,6 @@
 from prettytable import PrettyTable
 
-def Table(rows) -> None:
+def Table(rows: list) -> None:
     PasswordTable = PrettyTable()
     PasswordTable.field_names = ['id', 'name', 'password']
 

@@ -2,11 +2,12 @@ import sqlite3
 import os
 
 class DataBase:
-    def __init__(self, args):
+    def __init__(self, args: dict):
         self.args = args
 
         try:
-            open("pswd.db", "x")
+            file =open("pswd.db", "x")
+            file.close()
         except FileExistsError:
             pass
 
