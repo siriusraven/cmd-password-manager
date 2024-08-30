@@ -12,7 +12,7 @@ class JsonFileManager:
             json.dump(self.passwords, file, indent=4)
 
     # loads the password from the save file | loads it into a list and as dictionaries
-    def load_passwords(self, ) -> None:
+    def load_passwords(self) -> None:
         try:
             with open(f'{self.account}.json', 'r') as file:
                 pass

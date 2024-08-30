@@ -15,7 +15,7 @@ class Argparse:
             getattr(self, args.command)()
         except AttributeError:
             print(f'The command "{args.command}" does note exists.')
-            exit()
+            exit(22)
 
     # password id is going to be auto assigned and will not be determined by the user
     def add_password(self) -> None:

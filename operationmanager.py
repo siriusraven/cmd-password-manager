@@ -21,6 +21,7 @@ class Operations:
         for password in self.JsonFileManager.passwords:
             if password['id'] == Id:
                 self.JsonFileManager.passwords.remove(password)
+        return None
     
     def Id_generator(self) -> int:
         Ids = [x for x in self.JsonFileManager.passwords['id']]

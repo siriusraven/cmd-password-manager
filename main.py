@@ -15,15 +15,15 @@ def main() -> None:
     #if the input was to list the passwords it will list  them and exit
     if IOParse['command'] == 'list_passwords':
         TableManager(JsonFileManager=JsonFileManager)
-        exit()
+        exit(0)
 
     #if the input was anything other than listing it will put the input into the Operations class and it will deal with it
     Operation = Operations(command=IOParse['command'], args=IOParse['args'], JsonFileManager=SaveFile)
 
-    if Operations != 0:
+    if Operations != None:
         SaveFile.passwords.append(Operation)
         print('Password successfully added!')
-        exit()
+        exit(0)
     
     print('Password successfully removed!')
 
