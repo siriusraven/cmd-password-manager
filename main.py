@@ -1,31 +1,27 @@
 from cryptographer import Cryptographer
 from cli import Argparse
-from savefilemanager import JsonFileManager
-from decorators import TableManager
-from operationmanager import Operations
+import decorators
+from database import DataBase
 
 def main() -> None:
-    CommandLineInterface = Argparse()
-    IOParse = CommandLineInterface.CommandValue
-    #provides the account for the save file manager and the operations manager
-    SaveFile = JsonFileManager(IOParse['args']['account_name'])
-    #loads the save file
-    SaveFile.load_passwords()
+    Parser = Argparse()
+    IOParse = Argparse().CommandValue
 
-    #if the input was to list the passwords it will list  them and exit
-    if IOParse['command'] == 'list_passwords':
-        TableManager(JsonFileManager=JsonFileManager)
-        exit(0)
-
-    #if the input was anything other than listing it will put the input into the Operations class and it will deal with it
-    Operation = Operations(command=IOParse['command'], args=IOParse['args'], JsonFileManager=SaveFile)
-
-    if Operations != None:
-        SaveFile.passwords.append(Operation)
-        print('Password successfully added!')
-        exit(0)
+    Database = DataBase(args=IOParse['args'])
     
-    print('Password successfully removed!')
+    if IOParse['command'] == 'list_passwords':
+        passwords = Database.list_rows()
+        decorators.Table(passwords)
+    
+    if IOParse['command'] == 'add_password':
+        Database.add_row()
+    
+    if IOParse['command'] == 'remove_password':
+        Database.remove_row()
+
+    if IOParse['command'] == 'drop_table':
+        Database.drop_table()
+
 
 if __name__ == '__main__':
     main()

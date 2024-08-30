@@ -1,15 +1,10 @@
 from prettytable import PrettyTable
 
-class TableManager:
-    def __init__(self, JsonFileManager) -> None:
-        self.PasswordTable = PrettyTable()
-        self.PasswordTable.field_names = ['name', 'password', 'id']
-        self.passswords = JsonFileManager.passwords
+def Table(rows) -> None:
+    PasswordTable = PrettyTable()
+    PasswordTable.field_names = ['id', 'name', 'password']
 
-        self.PrintTable()
-    def PrintTable(self) -> None:
-        for password in self.passswords:
-            self.PasswordTable.add_row(password['name'], password['password'], password['id'])
-        
-        self.PasswordTable.sortby = 'id'
-        print(self.PasswordTable)
+    PasswordTable.add_rows(rows)
+    PasswordTable.sortby = 'id'
+    print(PasswordTable)
+    
