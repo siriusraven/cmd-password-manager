@@ -14,7 +14,7 @@ def main() -> None:
 
     #if the input was to list the passwords it will list  them and exit
     if IOParse['command'] == 'list_passwords':
-        pass #list_passwords(SaveFile.passwords)
+        TableManager(JsonFileManager=JsonFileManager)
         exit()
 
     #if the input was anything other than listing it will put the input into the Operations class and it will deal with it
