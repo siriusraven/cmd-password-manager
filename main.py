@@ -15,18 +15,23 @@ def main() -> None:
     try:
         file = open('pswd.db')
         file.close()
-    except FileNotFoundError:
         master_key = input('Enter master key: \n')
+
+        Validate.master_key_validation(master_key)
+        Validate.master_key_strenght_validation(master_key)
+    except FileNotFoundError:
+        master_key = input('Enter new master key: \n')
 
         Validate.master_key_validation(master_key)
         Validate.master_key_strenght_validation(master_key)
 
         Cryptographer.generate_key(master_key)
-        print('Master key saved successfully. Please restart the program.')
+        print('Master key saved successfully. Exiting program.')
         exit(0)
-    
+
+    #check if given masterkey is correct
     #if IOParse['args']['password'] != None:
-        
+        #encrypt args:password
     
     Database = DataBase(args=encrypted_args)
     
